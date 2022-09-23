@@ -1,9 +1,11 @@
-POST http://localhost:5073/breakfasts
+@id=8bd1ced0-aa26-454d-a432-32127043b6c4
+
+PUT http://localhost:5073/breakfasts/{{id}}
 Content-Type: application/json
 
 {
-    "name" : "Beef Sunshine",
-    "description" : "Beef everything! Join us for a ",
+    "name" : "Vegan Sunshine",
+    "description" : "Vegansssss everything! Join us for a ",
     "startDateTime" : "2022-04-08T08:00:00",
     "endDateTime" : "2022-04-08T11:00:00",
     "savory" :[

@@ -9,17 +9,17 @@
       "BuberBreakfast/1.0.0": {
         "dependencies": {
           "BuberBreakfast.Contracts": "1.0.0",
-          "ErrorOr": "0.1.0"
+          "ErrorOr": "1.0.1"
         },
         "runtime": {
           "BuberBreakfast.dll": {}
         }
       },
-      "ErrorOr/0.1.0": {
+      "ErrorOr/1.0.1": {
         "runtime": {
           "lib/net6.0/ErrorOr.dll": {
-            "assemblyVersion": "0.1.0.0",
-            "fileVersion": "0.1.0.0"
+            "assemblyVersion": "1.0.1.0",
+            "fileVersion": "1.0.1.0"
           }
         }
       },
@@ -36,12 +36,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "ErrorOr/0.1.0": {
+    "ErrorOr/1.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-adIVrA1Ixck5oZ79ZKB5f7k+aVlg4AB47nNHY14+qI8d+4//sTe0Dvbp8AIJEz/94OimmWjdGfei67q9UZPGig==",
-      "path": "erroror/0.1.0",
-      "hashPath": "erroror.0.1.0.nupkg.sha512"
+      "sha512": "sha512-4ALbolifN9sinir3tZGntBEoJso96JyvjnnsAaNxxB2QFEkVtzcCSlvGkp27RDKe3UIexiV/wQrFceWfr7S5XA==",
+      "path": "erroror/1.0.1",
+      "hashPath": "erroror.1.0.1.nupkg.sha512"
     },
     "BuberBreakfast.Contracts/1.0.0": {
       "type": "project",
