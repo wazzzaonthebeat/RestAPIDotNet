@@ -20,20 +20,20 @@ public class BreakfastsController : ApiController
     [HttpPost]
     public IActionResult CreateBreakfast(CreateBreakfastRequest request)
     {
-        var breakfast = new Breakfast(
-            Guid.NewGuid(),
+        ErrorOr <Breakfast> requestBreakfastResult =  Breakfast.Create(
             request.Name,
             request.Description,
             request.StartDateTime,
             request.EndDateTime,
-            DateTime.UtcNow,
             request.Savory,
             request.Sweet
         );
-        //Todo: Save to database
+        if (requestBreakfastResult.IsError)
+            return Problem(requestBreakfastResult.Errors);
+        var breakfast = requestBreakfastResult.Value;
         ErrorOr<Created> createdBreakfastResult = _breakfastService.CreateBreakfast(breakfast);
          return createdBreakfastResult.Match(
-            created => Ok(MapBreakfastResponse(breakfast)),
+            created => CreatedAtGetBreakfast(breakfast),
             errors => Problem(errors)
         );
     }
@@ -55,19 +55,13 @@ public class BreakfastsController : ApiController
     public IActionResult UpsertBreakfast(Guid id, UpsertBreakfastRequest request)
     {
 
-        var breakfast = new Breakfast(
-           id,
-           request.Name,
-           request.Description,
-           request.StartDateTime,
-           request.EndDateTime,
-           DateTime.UtcNow,
-           request.Savory,
-           request.Sweet
-       );
+        ErrorOr<Breakfast> requestBreakfastResult =  Breakfast.From(id,request);
+
+       if (requestBreakfastResult.IsError)
+        return Problem(requestBreakfastResult.Errors);
+        var breakfast = requestBreakfastResult.Value;
        ErrorOr<UpsertedBreakfast> upsertedBreakfastResult = _breakfastService.UpsertBreakfast(breakfast);
 
-        // TODO: return 201 if a new breakfast was created
         return upsertedBreakfastResult.Match(
             upserted => upserted.isNewlyCreated ? CreatedAtGetBreakfast(breakfast) : NoContent(),
             errors => Problem(errors)
